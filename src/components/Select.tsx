@@ -83,7 +83,7 @@ export function Select({
                   type="button"
                   onClick={() => handleSelect(option)}
                   disabled={option.disabled}
-                  className={`cursor-pointer w-full text-left text-foreground-400 hover:text-body-600 text-body-400 hover:bg-foreground-000 focus:bg-foreground-000 focus:outline-none px-4 py-2`}
+                  className={`cursor-pointer w-full text-foreground-400 hover:text-body-600 text-body-400 hover:bg-foreground-000 focus:bg-foreground-000 focus:outline-none px-4 py-2`}
                 >
                   {option.label}
                 </button>
