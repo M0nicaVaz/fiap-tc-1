@@ -1,6 +1,6 @@
 'use client';
 
-import { Button, IconButton } from '@/components';
+import { Button, IconButton, Select } from '@/components';
 import { TrashIcon, PencilLineIcon } from '@phosphor-icons/react';
 
 export default function Home() {
@@ -16,21 +16,21 @@ export default function Home() {
             title="Concluir transação"
             onClick={() => console.log('oi')}
           />
-          <Button
-            disabled
-            title="Cancelar transação"
-            onClick={() => console.log('oi')}
-          />
-          <Button
-            loading
-            title="Cancelar transação"
-            onClick={() => console.log('oi')}
-          />
         </section>
         <section className="text-caption-600">
           summary
           <IconButton icon={TrashIcon} />
           <IconButton icon={PencilLineIcon} />
+          <label className="block text-sm font-medium mb-2">Pequeno</label>
+          <Select
+            options={[
+              { value: 'sm', label: 'Pequeno' },
+              { value: 'md', label: 'Médio' },
+              { value: 'lg', label: 'Grande' },
+            ]}
+            placeholder="Seleção pequena"
+            onChange={(value) => console.log(value)}
+          />
         </section>
       </main>
     </div>
