@@ -6,7 +6,7 @@ export default function Home() {
         <section className="text-body-600">menu </section>
         <section className="text-subtitle-600">welcome</section>
         <section>
-          <p className="text-subtitle">add transaction</p>
+          <p className="text-subtitle bg-highlight">add transaction</p>
         </section>
         <section className="text-caption-600">summary</section>
       </main>
