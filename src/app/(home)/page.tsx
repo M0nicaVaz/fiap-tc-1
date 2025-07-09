@@ -1,6 +1,7 @@
 'use client';
 
-import { Button } from '@/components';
+import { Button, IconButton } from '@/components';
+import { TrashIcon, PencilLineIcon } from '@phosphor-icons/react';
 
 export default function Home() {
   return (
@@ -26,7 +27,11 @@ export default function Home() {
             onClick={() => console.log('oi')}
           />
         </section>
-        <section className="text-caption-600">summary</section>
+        <section className="text-caption-600">
+          summary
+          <IconButton icon={TrashIcon} />
+          <IconButton icon={PencilLineIcon} />
+        </section>
       </main>
     </div>
   );
