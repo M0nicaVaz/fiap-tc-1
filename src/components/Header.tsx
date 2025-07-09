@@ -1,0 +1,10 @@
+import { UserCircleIcon } from '@phosphor-icons/react/dist/ssr';
+
+export function Header() {
+  return (
+    <header className="h-24 gap-4 bg-foreground-400 w-full flex items-center justify-end-safe px-6">
+      <span className="text-caption-600 text-white">Visitante da Silva</span>
+      <UserCircleIcon className="text-highlight w-10 h-10" />
+    </header>
+  );
+}

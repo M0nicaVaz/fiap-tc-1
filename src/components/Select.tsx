@@ -1,3 +1,4 @@
+'use client';
 import { CaretUpIcon } from '@phosphor-icons/react/dist/ssr';
 import { useState, useRef, useEffect } from 'react';
 
