@@ -3,3 +3,7 @@ export * from './Spinner';
 export * from './IconButton';
 export * from './Select';
 export * from './Header';
+export * from './Menu';
+export * from './TransactionList';
+export * from './WelcomePannel';
+export * from './NewTransaction';

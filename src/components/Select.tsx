@@ -63,7 +63,7 @@ export function Select({
         type="button"
         onClick={toggleDropdown}
         disabled={disabled}
-        className={`disabled:opacity-50 text-foreground-400 text-body-400 disabled:cursor-not-allowed cursor-pointer enabled:hover:border-primary-400 enabled:hover:bg-foreground-000 w-full text-left flex items-center justify-between gap-2 px-4 py-2 text-sm bg-white border border-solid border-border-400 rounded-lg focus:outline-none sm:min-w-80 focus:ring focus:ring-foreground-400 focus:border-transparent transition-all duration-200`}
+        className={`disabled:opacity-50 text-foreground-400 text-body-400 disabled:cursor-not-allowed cursor-pointer enabled:hover:border-primary-400 enabled:hover:bg-foreground-000 w-full text-left flex items-center justify-between gap-2 px-4 py-2 text-sm bg-white border border-solid border-border-400 rounded-sm focus:outline-none sm:min-w-80 focus:ring focus:ring-foreground-400 focus:border-transparent transition-all duration-200`}
       >
         <span className={selectedValue ? 'text-body-600' : 'text-gray-400'}>
           {selectedValue ? selectedValue.label : placeholder}
@@ -76,7 +76,7 @@ export function Select({
       </button>
 
       {isOpen && (
-        <div className="absolute z-50 w-full mt-1 bg-white border border-border-400 rounded-md shadow-lg max-h-60 overflow-auto">
+        <div className="absolute z-50 w-full mt-1 bg-white border border-border-400 rounded-sm shadow-lg max-h-60 overflow-auto">
           <ul role="listbox" className="py-1">
             {options.map((option) => (
               <li key={option.value}>

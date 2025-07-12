@@ -1,14 +1,22 @@
-import { Header } from '@/components';
+import {
+  Header,
+  Menu,
+  NewTransaction,
+  TransactionList,
+  WelcomePannel,
+} from '@/components';
 
 export default function Home() {
   return (
     <div className="flex flex-col items-center justify-items-center min-h-screen pb-10 font-sans">
       <Header />
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <section className="text-body-600">menu </section>
-        <section className="text-subtitle-600">welcome</section>
-        <section>algo</section>
-        <section className="text-caption-600">summary</section>
+      <main className="flex h-full flex-col lg:flex-row gap-6 sm:gap-8 row-start-2 w-full py-6 max-w-7xl px-6 sm:px-[60]">
+        <Menu />
+        <div className="flex flex-col gap-6 lg:gap-8 w-full sm:max-w-[690]">
+          <WelcomePannel />
+          <NewTransaction />
+        </div>
+        <TransactionList />
       </main>
     </div>
   );
