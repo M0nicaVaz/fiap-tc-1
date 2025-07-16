@@ -46,7 +46,7 @@ export function WelcomePannel() {
 
         <div className="flex flex-col">
           <span className="text-body-400">Conta Corrente</span>
-          <span className="text-highlight-000 ">{formattedBalance()}</span>
+          <span className="text-highlight-400 ">{formattedBalance()}</span>
         </div>
       </div>
     </section>

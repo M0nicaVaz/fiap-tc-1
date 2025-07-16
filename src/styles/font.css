@@ -16,7 +16,7 @@
   line-height: var(--leading-normal);
 }
 
-@utility text-highlight-000 {
+@utility text-highlight-400 {
   font-size: var(--text-3xl);
   font-weight: var(--font-weight-normal);
   line-height: var(--leading-normal);
