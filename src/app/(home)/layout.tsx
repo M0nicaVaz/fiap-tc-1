@@ -23,10 +23,10 @@ export default function RootLayout({
     <html lang='pt-br'>
       <body className={`${inter.variable} flex antialiased`}>
         <Providers>
-          <main className='flex-1'>
+          <div className='flex h-full min-h-screen flex-1 flex-col'>
             <Header />
             {children}
-          </main>
+          </div>
         </Providers>
       </body>
     </html>
