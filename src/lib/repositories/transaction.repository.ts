@@ -22,12 +22,12 @@ export class TransactionRepositoryLocalStorage
   }
 
   findById(id: string): ITransaction | undefined {
-    return this.getAll().find((t) => t.id === id);
+    return this.getAll().find(t => t.id === id);
   }
 
   remove(id: string): void {
     const currentTransactions = this.getAll();
-    const newTransactions = currentTransactions.filter((t) => t.id !== id);
+    const newTransactions = currentTransactions.filter(t => t.id !== id);
     localStorage.setItem(
       TRANSACTIONS_STORAGE_KEY,
       JSON.stringify(newTransactions)
@@ -36,7 +36,7 @@ export class TransactionRepositoryLocalStorage
 
   update(id: string, updated: Partial<ITransaction>): void {
     const currentTransactions = this.getAll();
-    const newTransactions = currentTransactions.map((t) =>
+    const newTransactions = currentTransactions.map(t =>
       t.id === id ? { ...t, ...updated } : t
     );
     localStorage.setItem(

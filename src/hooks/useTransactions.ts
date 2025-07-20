@@ -1,7 +1,7 @@
 'use client';
 
-import { ITransaction } from '@/lib/types/transaction/iTransaction';
 import { transactionService } from '@/lib/services/transaction.service';
+import { ITransaction } from '@/lib/types/transaction/iTransaction';
 import { useCallback, useEffect, useState } from 'react';
 
 export function useTransactions() {
@@ -23,7 +23,7 @@ export function useTransactions() {
     (transaction: Omit<ITransaction, 'id' | 'createdAt'>) => {
       try {
         const newTransaction = transactionService.add(transaction);
-        setTransactions((prev) => [...prev, newTransaction]);
+        setTransactions(prev => [...prev, newTransaction]);
       } catch (error) {
         console.error('Failed to add transaction:', error);
       }
@@ -34,7 +34,7 @@ export function useTransactions() {
   const removeTransaction = useCallback((id: string) => {
     try {
       transactionService.remove(id);
-      setTransactions((prev) => prev.filter((t) => t.id !== id));
+      setTransactions(prev => prev.filter(t => t.id !== id));
     } catch (error) {
       console.error('Failed to remove transaction:', error);
     }
@@ -44,8 +44,8 @@ export function useTransactions() {
     (id: string, updated: Partial<ITransaction>) => {
       try {
         transactionService.update(id, updated);
-        setTransactions((prev) =>
-          prev.map((t) => (t.id === id ? { ...t, ...updated } : t))
+        setTransactions(prev =>
+          prev.map(t => (t.id === id ? { ...t, ...updated } : t))
         );
       } catch (error) {
         console.error('Failed to update transaction:', error);

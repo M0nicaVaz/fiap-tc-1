@@ -1,6 +1,6 @@
+import { TransactionRepositoryLocalStorage } from '@/lib/repositories/transaction.repository';
 import { ITransaction } from '@/lib/types/transaction/iTransaction';
 import { ITransactionRepository } from '@/lib/types/transaction/iTransactionRepository';
-import { TransactionRepositoryLocalStorage } from '@/lib/repositories/transaction.repository';
 
 class TransactionService {
   private repository: ITransactionRepository;
