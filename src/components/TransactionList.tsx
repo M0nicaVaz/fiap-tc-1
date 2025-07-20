@@ -1,8 +1,8 @@
-import { Transaction } from '@/core/entities/Transaction.entity';
+import { ITransaction } from '@/lib/types/transaction/iTransaction';
 import { Button } from './Button';
 
 interface TransactionListProps {
-  transactions: Transaction[];
+  transactions: ITransaction[];
   onEdit: (id: string) => void;
   onDelete: (id: string) => void;
 }
@@ -26,7 +26,8 @@ export function TransactionList({
             >
               <div>
                 <span className="font-semibold">{t.description}</span> — R${' '}
-                {t.amount} — {t.type} — {t.date.toLocaleDateString()}
+                {t.amount} - {t.type} -{' '}
+                {new Date(t.createdAt).toLocaleDateString()}
               </div>
               <div className="flex gap-2">
                 <Button title="Editar" onClick={() => onEdit(t.id)} />

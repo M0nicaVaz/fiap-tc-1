@@ -1,59 +1,58 @@
-import { useState, useEffect, useCallback } from 'react';
-import { Transaction } from '@/core/entities/Transaction.entity';
-import { LocalStorageTransactionRepository } from '@/core/repositories/transaction/repositoryLocalStorage';
+'use client';
 
-const repository = new LocalStorageTransactionRepository();
+import { ITransaction } from '@/lib/types/transaction/iTransaction';
+import { transactionService } from '@/lib/services/transaction.service';
+import { useCallback, useEffect, useState } from 'react';
 
 export function useTransactions() {
-  const [transactions, setTransactions] = useState<Transaction[]>([]);
+  const [transactions, setTransactions] = useState<ITransaction[]>([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const loadTransactions = () => {
-      try {
-        const storedTransactions = repository.getAll();
-        setTransactions(storedTransactions);
-      } catch (error) {
-        console.error('Erro ao carregar transações:', error);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    loadTransactions();
+    try {
+      const allTransactions = transactionService.getAll();
+      setTransactions(allTransactions);
+    } catch (error) {
+      console.error('Failed to load transactions:', error);
+    } finally {
+      setLoading(false);
+    }
   }, []);
 
   const addTransaction = useCallback(
-    (transactionData: Omit<Transaction, 'id'>) => {
-      const newTransaction: Transaction = {
-        ...transactionData,
-        id: crypto.randomUUID(),
-      };
-
-      repository.add(newTransaction);
-      setTransactions((prev) => [...prev, newTransaction]);
+    (transaction: Omit<ITransaction, 'id' | 'createdAt'>) => {
+      try {
+        const newTransaction = transactionService.add(transaction);
+        setTransactions((prev) => [...prev, newTransaction]);
+      } catch (error) {
+        console.error('Failed to add transaction:', error);
+      }
     },
     []
   );
 
   const removeTransaction = useCallback((id: string) => {
-    repository.remove(id);
-    setTransactions((prev) => prev.filter((t) => t.id !== id));
+    try {
+      transactionService.remove(id);
+      setTransactions((prev) => prev.filter((t) => t.id !== id));
+    } catch (error) {
+      console.error('Failed to remove transaction:', error);
+    }
   }, []);
 
   const updateTransaction = useCallback(
-    (id: string, updates: Partial<Transaction>) => {
-      repository.update(id, updates);
-      setTransactions((prev) =>
-        prev.map((t) => (t.id === id ? { ...t, ...updates } : t))
-      );
+    (id: string, updated: Partial<ITransaction>) => {
+      try {
+        transactionService.update(id, updated);
+        setTransactions((prev) =>
+          prev.map((t) => (t.id === id ? { ...t, ...updated } : t))
+        );
+      } catch (error) {
+        console.error('Failed to update transaction:', error);
+      }
     },
     []
   );
-
-  const getTransactionById = useCallback((id: string) => {
-    return repository.findById(id);
-  }, []);
 
   return {
     transactions,
@@ -61,6 +60,5 @@ export function useTransactions() {
     addTransaction,
     removeTransaction,
     updateTransaction,
-    getTransactionById,
   };
 }

@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Button } from './Button';
-import { Transaction } from '@/core/entities/Transaction.entity';
+import { Transaction } from '@/lib/types/transaction/iTransaction';
 
 interface NewTransactionProps {
   onAdd: (transaction: Omit<Transaction, 'id'>) => void;

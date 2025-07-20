@@ -8,7 +8,7 @@ import {
   WelcomePannel,
 } from '@/components';
 import { useTransactions } from '@/hooks';
-import { Transaction } from '@/core/entities/Transaction.entity';
+import { Transaction } from '@/lib/types/transaction/iTransaction';
 
 export default function Home() {
   const [menuOpen, setMenuOpen] = useState(false);
