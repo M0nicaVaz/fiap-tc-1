@@ -10,7 +10,7 @@ export function TransactionSection() {
         Nova Transação
       </h2>
 
-      <div className='min-h-[468px] w-[355px] flex-col gap-4'>
+      <div className='min-h-[364px] w-[355px] flex-col gap-4'>
         <TransactionForm onCreate={addTransaction} />
       </div>
     </section>

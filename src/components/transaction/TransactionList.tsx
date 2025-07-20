@@ -30,7 +30,7 @@ export function TransactionList() {
   });
 
   return (
-    <section className='w-full min-w-[280px] bg-white p-6 lg:h-dvh'>
+    <section className='w-full min-w-[280px] bg-white p-6 lg:min-h-[calc(100vh-7.5rem)]'>
       <h2 className='mb-4 text-lg font-bold'>Extrato</h2>
       {transactions.length === 0 ? (
         <p>Nenhuma transação cadastrada.</p>
