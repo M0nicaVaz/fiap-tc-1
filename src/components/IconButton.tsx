@@ -15,7 +15,7 @@ export function IconButton({
 }: IconButtonProps) {
   return (
     <button
-      className={`flex items-center justify-center text-body-600 text-white rounded-full cursor-pointer transition-colors w-10 h-10  hover:bg-highlight disabled:cursor-not-allowed disabled:bg-foreground-000 disabled:text-foreground-400 ${
+      className={`flex h-10 w-10 cursor-pointer items-center justify-center rounded-full text-body-600 text-white transition-colors hover:bg-highlight disabled:cursor-not-allowed disabled:bg-foreground-000 disabled:text-foreground-400 ${
         transparent ? 'bg-transparent' : 'bg-foreground-400'
       }`}
       {...props}

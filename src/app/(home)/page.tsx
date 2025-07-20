@@ -1,5 +1,4 @@
 'use client';
-import { useState } from 'react';
 import {
   Header,
   Menu,
@@ -8,7 +7,8 @@ import {
   WelcomePannel,
 } from '@/components';
 import { useTransactions } from '@/hooks';
-import { Transaction } from '@/lib/types/transaction/iTransaction';
+import { ITransaction } from '@/lib/types/transaction/iTransaction';
+import { useState } from 'react';
 
 export default function Home() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -22,7 +22,7 @@ export default function Home() {
     { label: 'Outros serviços', href: '/others' },
   ];
 
-  function handleAdd(t: Omit<Transaction, 'id'>) {
+  function handleAdd(t: Omit<ITransaction, 'id'>) {
     addTransaction(t);
   }
 
@@ -35,20 +35,20 @@ export default function Home() {
   }
 
   return (
-    <div className="flex flex-col items-center min-h-screen pb-10 font-sans">
+    <div className='flex min-h-screen flex-col items-center pb-10 font-sans'>
       <Header onMenuClick={() => setMenuOpen(true)} />
-      <main className="flex  h-full flex-col items-center lg:items-start lg:flex-row gap-6 sm:gap-8 row-start-2 w-full py-6 max-w-7xl px-6 sm:px-[60]">
+      <main className='row-start-2 flex h-full w-full max-w-7xl flex-col items-center gap-6 px-6 py-6 sm:gap-8 sm:px-[60] lg:flex-row lg:items-start'>
         <Menu
           open={menuOpen}
           onClose={() => setMenuOpen(false)}
           routes={routes}
         />
-        <div className="flex flex-col gap-6 lg:gap-8 w-full sm:max-w-[690]">
+        <div className='flex w-full flex-col gap-6 sm:max-w-[690] lg:gap-8'>
           <WelcomePannel />
           <NewTransaction onAdd={handleAdd} />
         </div>
         {loading ? (
-          <div className="text-caption-600 bg-white w-full lg:h-dvh p-4 flex items-center justify-center">
+          <div className='flex w-full items-center justify-center bg-white p-4 text-caption-600 lg:h-dvh'>
             <p>Carregando transações...</p>
           </div>
         ) : (

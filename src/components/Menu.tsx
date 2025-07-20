@@ -16,23 +16,24 @@ export function Menu({ open, onClose, routes }: MenuProps) {
   return (
     <>
       <div
-        className={`fixed inset-0 z-40 bg-black/30 transition-opacity duration-200 xl:hidden ${open ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'}`}
+        className={`fixed inset-0 z-40 bg-black/30 transition-opacity duration-200 xl:hidden ${open ? 'pointer-events-auto opacity-100' : 'pointer-events-none opacity-0'}`}
         onClick={onClose}
         aria-hidden={!open}
       />
       <nav
-        className={`text-body-600 bg-white h-dvh w-64 fixed top-0 left-0 z-50 flex flex-col gap-4 p-8 shadow-lg transition-transform duration-200 xl:static xl:shadow-none xl:w-full xl:h-dvh xl:flex xl:flex-col xl:gap-0 xl:p-0 ${open ? 'translate-x-0' : '-translate-x-full'} xl:translate-x-0 xl:opacity-100 xl:pointer-events-auto`}
+        className={`fixed top-0 left-0 z-50 flex h-dvh w-64 flex-col gap-4 bg-white p-8 text-body-600 shadow-lg transition-transform duration-200 xl:static xl:flex xl:h-dvh xl:w-full xl:flex-col xl:gap-0 xl:p-0 xl:shadow-none ${open ? 'translate-x-0' : '-translate-x-full'} xl:pointer-events-auto xl:translate-x-0 xl:opacity-100`}
         style={{ minWidth: '200px' }}
-        aria-label="Menu de navegação"
+        aria-label='Menu de navegação'
       >
         <button
-          className="xl:hidden self-end mb-8 text-foreground-400"
+          role='button'
+          className='mb-8 self-end text-foreground-400 xl:hidden'
           onClick={onClose}
-          aria-label="Fechar menu"
+          aria-label='Fechar menu'
         >
-          <XIcon size={24} weight="bold" />
+          <XIcon size={24} weight='bold' />
         </button>
-        {routes.map((route) => (
+        {routes.map(route => (
           <LinkButton key={route.href} to={route.href} text={route.label} />
         ))}
       </nav>

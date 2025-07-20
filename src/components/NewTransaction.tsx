@@ -1,9 +1,9 @@
+import { ITransaction } from '@/lib/types/transaction/iTransaction';
 import { useState } from 'react';
 import { Button } from './Button';
-import { Transaction } from '@/lib/types/transaction/iTransaction';
 
 interface NewTransactionProps {
-  onAdd: (transaction: Omit<Transaction, 'id'>) => void;
+  onAdd: (transaction: Omit<ITransaction, 'id' | 'createdAt'>) => void;
 }
 
 export function NewTransaction({ onAdd }: NewTransactionProps) {
@@ -32,44 +32,44 @@ export function NewTransaction({ onAdd }: NewTransactionProps) {
   return (
     <form
       onSubmit={handleSubmit}
-      className="bg-gray-000 rounded-sm p-4 flex flex-col gap-2 w-full max-w-md"
+      className='flex w-full max-w-md flex-col gap-2 rounded-sm bg-gray-000 p-4'
     >
-      <h2 className="text-lg font-bold mb-2">Nova Transação</h2>
+      <h2 className='mb-2 text-lg font-bold'>Nova Transação</h2>
       <input
-        className="border p-2 rounded"
-        placeholder="Descrição"
+        className='rounded border p-2'
+        placeholder='Descrição'
         value={description}
-        onChange={(e) => setDescription(e.target.value)}
+        onChange={e => setDescription(e.target.value)}
         required
       />
       <input
-        className="border p-2 rounded"
-        placeholder="Valor"
-        type="number"
+        className='rounded border p-2'
+        placeholder='Valor'
+        type='number'
         value={amount}
-        onChange={(e) => setAmount(e.target.value)}
+        onChange={e => setAmount(e.target.value)}
         required
       />
       <input
-        className="border p-2 rounded"
-        placeholder="Data"
-        type="date"
+        className='rounded border p-2'
+        placeholder='Data'
+        type='date'
         value={date}
-        onChange={(e) => setDate(e.target.value)}
+        onChange={e => setDate(e.target.value)}
         required
       />
       <select
-        className="border p-2 rounded"
+        className='rounded border p-2'
         value={type}
-        onChange={(e) =>
+        onChange={e =>
           setType(e.target.value as 'income' | 'expense' | 'investment')
         }
       >
-        <option value="income">Receita</option>
-        <option value="expense">Despesa</option>
-        <option value="investment">Investimento</option>
+        <option value='income'>Receita</option>
+        <option value='expense'>Despesa</option>
+        <option value='investment'>Investimento</option>
       </select>
-      <Button title="Adicionar" type="submit" />
+      <Button title='Adicionar' type='submit' />
     </form>
   );
 }
