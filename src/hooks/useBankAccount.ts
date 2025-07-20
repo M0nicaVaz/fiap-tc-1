@@ -1,6 +1,6 @@
 'use client';
 
-import { bankAccountService } from '@/lib/services/bank-account.service';
+import { bankAccountService } from '@/lib/services/bankAccount.service';
 import { useEffect, useState } from 'react';
 import { useTransactions } from './useTransactions';
 
@@ -11,6 +11,7 @@ export function useBankAccount() {
   useEffect(() => {
     const account = bankAccountService.getAccount();
     setBalance(account.totalBalance);
+    console.log('Updated balance:', account.totalBalance);
   }, [transactions]);
 
   return { balance };

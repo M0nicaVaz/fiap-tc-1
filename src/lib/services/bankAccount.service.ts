@@ -1,6 +1,6 @@
-import { BankAccountRepository } from '../repositories/bank-account.repository';
+import { BankAccountRepository } from '../repositories/bankAccount.repository';
 import { TransactionRepositoryLocalStorage } from '../repositories/transaction.repository';
-import { IBankAccount } from '../types/bank-account/iBankAccount';
+import { IBankAccount } from '../types/bank-account';
 
 const transactionRepository = new TransactionRepositoryLocalStorage();
 const bankAccountRepository = new BankAccountRepository(transactionRepository);

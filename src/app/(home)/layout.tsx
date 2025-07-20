@@ -1,3 +1,4 @@
+import { TransactionProvider } from '@/context/useTransactionProvider';
 import '@/styles/globals.css';
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
@@ -18,8 +19,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang='pt-br'>
-      <body className={`${inter.variable} antialiased`}>{children}</body>
-    </html>
+    <TransactionProvider>
+      <html lang='pt-br'>
+        <body className={`${inter.variable} antialiased`}>{children}</body>
+      </html>
+    </TransactionProvider>
   );
 }
