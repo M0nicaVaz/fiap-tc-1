@@ -1,6 +1,7 @@
 import { TransactionRepositoryLocalStorage } from '@/lib/repositories/transaction.repository';
 import { ITransaction } from '@/lib/types/transaction/iTransaction';
 import { ITransactionRepository } from '@/lib/types/transaction/iTransactionRepository';
+import { CreateTransactionDTO } from '../types/transaction';
 
 class TransactionService {
   private repository: ITransactionRepository;
@@ -9,7 +10,7 @@ class TransactionService {
     this.repository = repository;
   }
 
-  add(transaction: Omit<ITransaction, 'id' | 'createdAt'>): ITransaction {
+  add(transaction: CreateTransactionDTO): ITransaction {
     const newTransaction: ITransaction = {
       ...transaction,
       id: crypto.randomUUID(),

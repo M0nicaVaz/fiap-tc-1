@@ -1,6 +1,7 @@
 'use client';
 
 import { transactionService } from '@/lib/services/transaction.service';
+import { CreateTransactionDTO } from '@/lib/types/transaction';
 import { ITransaction } from '@/lib/types/transaction/iTransaction';
 import { useCallback, useEffect, useState } from 'react';
 
@@ -19,17 +20,14 @@ export function useTransactions() {
     }
   }, []);
 
-  const addTransaction = useCallback(
-    (transaction: Omit<ITransaction, 'id' | 'createdAt'>) => {
-      try {
-        const newTransaction = transactionService.add(transaction);
-        setTransactions(prev => [...prev, newTransaction]);
-      } catch (error) {
-        console.error('Failed to add transaction:', error);
-      }
-    },
-    []
-  );
+  const addTransaction = useCallback((transaction: CreateTransactionDTO) => {
+    try {
+      const newTransaction = transactionService.add(transaction);
+      setTransactions(prev => [...prev, newTransaction]);
+    } catch (error) {
+      console.error('Failed to add transaction:', error);
+    }
+  }, []);
 
   const removeTransaction = useCallback((id: string) => {
     try {

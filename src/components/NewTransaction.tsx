@@ -1,9 +1,9 @@
-import { ITransaction } from '@/lib/types/transaction/iTransaction';
 import { useState } from 'react';
 import { Button } from './Button';
+import { CreateTransactionDTO } from '@/lib/types/transaction';
 
 interface NewTransactionProps {
-  onAdd: (transaction: Omit<ITransaction, 'id' | 'createdAt'>) => void;
+  onAdd: (transaction: CreateTransactionDTO) => void;
 }
 
 export function NewTransaction({ onAdd }: NewTransactionProps) {

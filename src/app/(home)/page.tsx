@@ -7,7 +7,7 @@ import {
   WelcomePannel,
 } from '@/components';
 import { useTransactions } from '@/hooks';
-import { ITransaction } from '@/lib/types/transaction/iTransaction';
+import { CreateTransactionDTO } from '@/lib/types/transaction';
 import { useState } from 'react';
 
 export default function Home() {
@@ -22,7 +22,7 @@ export default function Home() {
     { label: 'Outros serviços', href: '/others' },
   ];
 
-  function handleAdd(t: Omit<ITransaction, 'id'>) {
+  function handleAdd(t: CreateTransactionDTO) {
     addTransaction(t);
   }
 
