@@ -34,12 +34,14 @@ export function TransactionItem({
             title='Editar'
             icon={PencilIcon}
             onClick={() => onEdit(transaction.id)}
+            iconColor='text-white'
             variant='small'
           />
           <IconButton
             title='Excluir'
             icon={TrashIcon}
             onClick={() => onDelete(transaction.id)}
+            iconColor='text-white'
             variant='small'
           />
         </div>

@@ -1,6 +1,9 @@
 'use client';
 import { useTransactions } from '@/hooks';
 import { ITransaction } from '@/lib/types/transaction/iTransaction';
+import { useState } from 'react';
+import { Modal } from '../ui/Modal';
+import { TransactionForm } from './TransactionForm';
 import { TransactionItem } from './TransactionItem';
 
 interface MonthlyTransactionListProps {
@@ -12,13 +15,37 @@ export function MonthlyTransactionList({
   month,
   transactions,
 }: MonthlyTransactionListProps) {
-  const { removeTransaction } = useTransactions();
+  const { removeTransaction, updateTransaction } = useTransactions();
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [selectedTransaction, setSelectedTransaction] =
+    useState<ITransaction | null>(null);
 
   function handleEdit(id: string) {
-    console.log(`Edit transaction with id: ${id}`);
+    const transaction = transactions.find(t => t.id === id);
+    if (transaction) {
+      setSelectedTransaction(transaction);
+      setIsModalOpen(true);
+    }
   }
+
   function handleDelete(id: string) {
     removeTransaction(id);
+  }
+
+  function handleCloseModal() {
+    setIsModalOpen(false);
+    setSelectedTransaction(null);
+  }
+
+  function handleUpdateTransaction(data: Partial<ITransaction>) {
+    console.log('Updating transaction with data:', data);
+    if (selectedTransaction) {
+      updateTransaction(selectedTransaction.id, {
+        ...selectedTransaction,
+        ...data,
+      });
+      handleCloseModal();
+    }
   }
 
   return (
@@ -36,6 +63,20 @@ export function MonthlyTransactionList({
           />
         ))}
       </ul>
+      {selectedTransaction && (
+        <Modal
+          isOpen={isModalOpen}
+          onClose={handleCloseModal}
+          title='Editar transação'
+        >
+          <div className='p-4'>
+            <TransactionForm
+              transaction={selectedTransaction}
+              onEdit={handleUpdateTransaction}
+            />
+          </div>
+        </Modal>
+      )}
     </div>
   );
 }

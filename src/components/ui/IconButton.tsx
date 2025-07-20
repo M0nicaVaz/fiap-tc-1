@@ -5,6 +5,7 @@ export interface IconButtonProps
   icon: Icon;
   iconWeight?: IconWeight;
   transparent?: boolean;
+  iconColor?: string;
   variant?: 'small' | 'regular';
 }
 
@@ -13,6 +14,7 @@ export function IconButton({
   iconWeight = 'regular',
   transparent = false,
   variant = 'regular',
+  iconColor = 'text-foreground-400',
   ...props
 }: IconButtonProps) {
   const variantStyles = {
@@ -22,12 +24,16 @@ export function IconButton({
 
   return (
     <button
-      className={`flex ${variantStyles[variant]} cursor-pointer items-center justify-center rounded-full text-body-600 text-white transition-colors hover:bg-highlight disabled:cursor-not-allowed disabled:bg-foreground-000 disabled:text-foreground-400 ${
+      className={`flex ${variantStyles[variant]} group cursor-pointer items-center justify-center rounded-full text-body-600 transition-colors hover:bg-highlight hover:text-white disabled:cursor-not-allowed disabled:bg-foreground-000 disabled:text-foreground-400 ${
         transparent ? 'bg-transparent' : 'bg-foreground-400'
       }`}
       {...props}
     >
-      <Icon size={variant === 'small' ? 15 : 24} weight={iconWeight} />
+      <Icon
+        size={variant === 'small' ? 15 : 24}
+        weight={iconWeight}
+        className={iconColor + ' transition-colors group-hover:text-white'}
+      />
     </button>
   );
 }

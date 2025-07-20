@@ -42,6 +42,7 @@ export function WelcomePannel() {
             onClick={toggleBalanceVisibility}
             icon={isBalanceVisible ? EyeIcon : EyeSlashIcon}
             iconWeight='duotone'
+            iconColor='text-white'
             transparent
           />
         </div>

@@ -1,7 +1,7 @@
 import { Menu } from '@/components/layout';
 import {
-  TransactionForm,
   TransactionList,
+  TransactionSection,
   WelcomePannel,
 } from '@/components/transaction';
 import { routes } from '@/constants/routes';
@@ -12,7 +12,7 @@ export default function Home() {
       <Menu routes={routes} />
       <div className='flex w-full flex-col gap-6 sm:max-w-[690] lg:gap-8'>
         <WelcomePannel />
-        <TransactionForm />
+        <TransactionSection />
       </div>
       <TransactionList />
     </main>

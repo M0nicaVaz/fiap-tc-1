@@ -1,6 +1,7 @@
 'use client';
 import { useMenu } from '@/hooks';
 import { XIcon } from '@phosphor-icons/react/dist/ssr';
+import { IconButton } from '../ui';
 import { LinkButton } from '../ui/NavigationLink';
 
 interface Route {
@@ -26,13 +27,14 @@ export function Menu({ routes }: MenuProps) {
         style={{ minWidth: '200px' }}
         aria-label='Menu de navegação'
       >
-        <button
-          className='mb-8 cursor-pointer self-end text-foreground-400 hover:text-highlight xl:hidden'
-          onClick={closeMenu}
-          aria-label='Fechar menu'
-        >
-          <XIcon size={24} weight='bold' />
-        </button>
+        <div className='self-end xl:hidden'>
+          <IconButton
+            transparent
+            icon={XIcon}
+            onClick={closeMenu}
+            title='Fechar'
+          />
+        </div>
         {routes.map(route => (
           <LinkButton key={route.href} to={route.href} text={route.label} />
         ))}
