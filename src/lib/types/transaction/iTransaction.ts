@@ -3,6 +3,5 @@ export interface ITransaction {
   readonly createdAt: string;
   type: 'income' | 'expense' | 'investment';
   amount: number;
-  description: string;
   date: Date;
 }

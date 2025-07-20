@@ -13,20 +13,17 @@ export function NewTransaction({ onAdd }: NewTransactionProps) {
     'income'
   );
   const [amount, setAmount] = useState('');
-  const [description, setDescription] = useState('');
   const [date, setDate] = useState('');
 
   function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
-    if (!amount || !description || !date) return;
+    if (!amount || !date) return;
     onAdd({
       type,
       amount: Number(amount),
-      description,
       date: new Date(date),
     });
     setAmount('');
-    setDescription('');
     setDate('');
     setType('income');
   }
