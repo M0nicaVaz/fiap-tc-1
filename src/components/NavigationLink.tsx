@@ -11,7 +11,10 @@ export function LinkButton({ to, text }: LinkButtonProps) {
   const isActive = pathname === to;
 
   return (
-    <Link href={to} className={`${isActive && 'text-'}`}>
+    <Link
+      href={to}
+      className={`${isActive && 'text-body-600 text-foreground-400'} text-body-400 text-foreground-400 transition-colors hover:text-highlight`}
+    >
       {text}
     </Link>
   );
