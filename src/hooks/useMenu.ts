@@ -1,16 +1,14 @@
 'use client';
 
-import { useState } from 'react';
+import { MenuContext } from '@/context/useMenuProvider';
+import { useContext } from 'react';
 
 export const useMenu = () => {
-  const [isMenuOpen, setMenuOpen] = useState(false);
+  const context = useContext(MenuContext);
 
-  const openMenu = () => setMenuOpen(true);
-  const closeMenu = () => setMenuOpen(false);
+  if (!context) {
+    throw new Error('useMenu must be used within a MenuProvider');
+  }
 
-  return {
-    isMenuOpen,
-    openMenu,
-    closeMenu,
-  };
+  return context;
 };

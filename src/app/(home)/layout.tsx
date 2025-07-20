@@ -1,5 +1,5 @@
 import { Header } from '@/components';
-import { TransactionProvider } from '@/context/useTransactionProvider';
+import { Providers } from '@/context/providers';
 import '@/styles/globals.css';
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
@@ -20,13 +20,15 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <TransactionProvider>
-      <html lang='pt-br'>
-        <body className={`${inter.variable} antialiased`}>
-          <Header />
-          {children}
-        </body>
-      </html>
-    </TransactionProvider>
+    <html lang='pt-br'>
+      <body className={`${inter.variable} flex antialiased`}>
+        <Providers>
+          <main className='flex-1'>
+            <Header />
+            {children}
+          </main>
+        </Providers>
+      </body>
+    </html>
   );
 }
