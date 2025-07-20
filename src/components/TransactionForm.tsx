@@ -53,6 +53,8 @@ export function TransactionForm({ onAdd }: TransactionFormProps) {
           placeholder='00,00'
           type='number'
           label='Valor'
+          step='0.01'
+          min='0.01'
           required
         />
         <Input

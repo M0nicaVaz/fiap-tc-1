@@ -23,7 +23,7 @@ export function TransactionItem({
   return (
     <li
       key={transaction.id}
-      className='flex w-full flex-col items-center justify-between gap-2 border-b border-b-foreground-400 pb-2'
+      className='flex w-full flex-col items-center justify-between gap-2 border-b border-b-background-700 pb-2'
     >
       <div className='flex w-full items-center justify-between gap-2'>
         <span className='text-body-400'>

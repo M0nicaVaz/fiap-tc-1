@@ -1,5 +1,7 @@
 'use client';
 import { SquaresSVG, WelcomeSVG } from '@/assets/illustrations';
+import { useBankAccount } from '@/hooks/useBankAccount';
+import { formatPrice } from '@/utils/formatPrice';
 import { EyeSlashIcon } from '@phosphor-icons/react';
 import { EyeIcon } from '@phosphor-icons/react/dist/ssr';
 import { useState } from 'react';
@@ -7,17 +9,18 @@ import { IconButton } from './IconButton';
 
 export function WelcomePannel() {
   const [isBalanceVisible, setIsBalanceVisible] = useState<boolean>(false);
-  const [balance] = useState<string>('182,00');
+  const { balance } = useBankAccount();
   const today = new Date();
 
-  const toggleBalanceVisibility = () => {
+  function toggleBalanceVisibility() {
     setIsBalanceVisible((prev: boolean) => !prev);
-  };
+  }
 
-  const formattedBalance = (): string => {
-    if (isBalanceVisible) return balance;
-    return balance.replace(/\d/g, '*');
-  };
+  function formattedBalance(): string {
+    const formatted = formatPrice(balance);
+    if (isBalanceVisible) return formatted;
+    return '****';
+  }
 
   return (
     <section className='relative flex h-[655px] w-full flex-col items-start gap-10 rounded-sm bg-foreground-400 p-8 sm:h-[402px] sm:flex-row sm:justify-between lg:w-[690px]'>
