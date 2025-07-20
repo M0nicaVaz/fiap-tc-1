@@ -1,17 +1,13 @@
+'use client';
+
+import { useTransactions } from '@/hooks';
 import { ITransaction } from '@/lib/types/transaction/iTransaction';
+import { Suspense } from 'react';
 import { MonthlyTransactionList } from './MonthlyTransactionList';
 
-interface TransactionListProps {
-  transactions: ITransaction[];
-  onEdit: (id: string) => void;
-  onDelete: (id: string) => void;
-}
+export function TransactionList() {
+  const { transactions } = useTransactions();
 
-export function TransactionList({
-  transactions,
-  onEdit,
-  onDelete,
-}: TransactionListProps) {
   const groupedTransactions = transactions.reduce(
     (acc, transaction) => {
       const month = new Date(transaction.date).toLocaleString('pt-BR', {
@@ -41,13 +37,15 @@ export function TransactionList({
       ) : (
         <div className='w-full space-y-6'>
           {sortedMonths.map(month => (
-            <MonthlyTransactionList
+            <Suspense
               key={month}
-              month={month}
-              transactions={groupedTransactions[month]}
-              onEdit={onEdit}
-              onDelete={onDelete}
-            />
+              fallback={<div>Carregando transações...</div>}
+            >
+              <MonthlyTransactionList
+                month={month}
+                transactions={groupedTransactions[month]}
+              />
+            </Suspense>
           ))}
         </div>
       )}

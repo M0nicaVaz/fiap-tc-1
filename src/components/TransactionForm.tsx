@@ -1,16 +1,14 @@
 'use client';
-import { CreateTransactionDTO, ITransaction } from '@/lib/types/transaction';
+import { useTransactions } from '@/hooks';
+import { ITransaction } from '@/lib/types/transaction';
 import { useState } from 'react';
 import { Button } from './Button';
 import { Input } from './Input';
 import { Select } from './Select';
 
-interface TransactionFormProps {
-  onAdd: (transaction: CreateTransactionDTO) => void;
-}
-
-export function TransactionForm({ onAdd }: TransactionFormProps) {
+export function TransactionForm() {
   const [type, setType] = useState<ITransaction['type']>();
+  const { addTransaction } = useTransactions();
 
   function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -21,7 +19,7 @@ export function TransactionForm({ onAdd }: TransactionFormProps) {
 
     if (!amount || !date || !type) return;
 
-    onAdd({
+    addTransaction({
       type,
       amount: Number(amount),
       date: new Date(date.toString()),

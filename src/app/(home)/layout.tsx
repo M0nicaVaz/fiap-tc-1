@@ -1,3 +1,4 @@
+import { Header } from '@/components';
 import { TransactionProvider } from '@/context/useTransactionProvider';
 import '@/styles/globals.css';
 import type { Metadata } from 'next';
@@ -21,7 +22,10 @@ export default function RootLayout({
   return (
     <TransactionProvider>
       <html lang='pt-br'>
-        <body className={`${inter.variable} antialiased`}>{children}</body>
+        <body className={`${inter.variable} antialiased`}>
+          <Header />
+          {children}
+        </body>
       </html>
     </TransactionProvider>
   );

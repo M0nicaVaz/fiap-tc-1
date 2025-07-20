@@ -1,19 +1,26 @@
+'use client';
+import { useTransactions } from '@/hooks';
 import { ITransaction } from '@/lib/types/transaction/iTransaction';
 import { TransactionItem } from './TransactionItem';
 
 interface MonthlyTransactionListProps {
   month: string;
   transactions: ITransaction[];
-  onEdit: (id: string) => void;
-  onDelete: (id: string) => void;
 }
 
 export function MonthlyTransactionList({
   month,
   transactions,
-  onEdit,
-  onDelete,
 }: MonthlyTransactionListProps) {
+  const { removeTransaction } = useTransactions();
+
+  function handleEdit(id: string) {
+    console.log(`Edit transaction with id: ${id}`);
+  }
+  function handleDelete(id: string) {
+    removeTransaction(id);
+  }
+
   return (
     <div>
       <strong className='mb-2 block text-caption-600 text-background-700 first-letter:capitalize'>
@@ -24,8 +31,8 @@ export function MonthlyTransactionList({
           <TransactionItem
             key={transaction.id}
             transaction={transaction}
-            onEdit={onEdit}
-            onDelete={onDelete}
+            onEdit={handleEdit}
+            onDelete={handleDelete}
           />
         ))}
       </ul>
