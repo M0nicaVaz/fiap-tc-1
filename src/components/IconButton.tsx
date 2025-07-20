@@ -3,24 +3,31 @@ import { Icon, IconWeight } from '@phosphor-icons/react';
 export interface IconButtonProps
   extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   icon: Icon;
-  iconWeight: IconWeight;
-  transparent: boolean;
+  iconWeight?: IconWeight;
+  transparent?: boolean;
+  variant?: 'small' | 'regular';
 }
 
 export function IconButton({
   icon: Icon,
-  iconWeight,
-  transparent,
+  iconWeight = 'regular',
+  transparent = false,
+  variant = 'regular',
   ...props
 }: IconButtonProps) {
+  const variantStyles = {
+    small: 'h-6 w-6',
+    regular: 'h-10 w-10',
+  };
+
   return (
     <button
-      className={`flex h-10 w-10 cursor-pointer items-center justify-center rounded-full text-body-600 text-white transition-colors hover:bg-highlight disabled:cursor-not-allowed disabled:bg-foreground-000 disabled:text-foreground-400 ${
+      className={`flex ${variantStyles[variant]} cursor-pointer items-center justify-center rounded-full text-body-600 text-white transition-colors hover:bg-highlight disabled:cursor-not-allowed disabled:bg-foreground-000 disabled:text-foreground-400 ${
         transparent ? 'bg-transparent' : 'bg-foreground-400'
       }`}
       {...props}
     >
-      <Icon size={24} weight={iconWeight} />
+      <Icon size={variant === 'small' ? 15 : 24} weight={iconWeight} />
     </button>
   );
 }

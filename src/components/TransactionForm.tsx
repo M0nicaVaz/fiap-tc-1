@@ -1,31 +1,33 @@
+'use client';
+import { CreateTransactionDTO, ITransaction } from '@/lib/types/transaction';
 import { useState } from 'react';
 import { Button } from './Button';
-import { CreateTransactionDTO } from '@/lib/types/transaction';
-import { Select } from './Select';
 import { Input } from './Input';
+import { Select } from './Select';
 
-interface NewTransactionProps {
+interface TransactionFormProps {
   onAdd: (transaction: CreateTransactionDTO) => void;
 }
 
-export function NewTransaction({ onAdd }: NewTransactionProps) {
-  const [type, setType] = useState<'income' | 'expense' | 'investment'>(
-    'income'
-  );
-  const [amount, setAmount] = useState('');
-  const [date, setDate] = useState('');
+export function TransactionForm({ onAdd }: TransactionFormProps) {
+  const [type, setType] = useState<ITransaction['type']>();
 
-  function handleSubmit(e: React.FormEvent) {
+  function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    if (!amount || !date) return;
+    const formData = new FormData(e.currentTarget);
+
+    const amount = formData.get('amount');
+    const date = formData.get('date');
+
+    if (!amount || !date || !type) return;
+
     onAdd({
       type,
       amount: Number(amount),
-      date: new Date(date),
+      date: new Date(date.toString()),
     });
-    setAmount('');
-    setDate('');
-    setType('income');
+
+    e.currentTarget.reset();
   }
 
   return (
@@ -44,22 +46,20 @@ export function NewTransaction({ onAdd }: NewTransactionProps) {
             { label: 'Despesa', value: 'expense' },
             { label: 'Investimento', value: 'investment' },
           ]}
-          onChange={e => console.log(e)}
+          onChange={value => setType(value as ITransaction['type'])}
         />
         <Input
+          name='amount'
           placeholder='00,00'
           type='number'
-          value={amount}
-          onChange={e => setAmount(e.target.value)}
           label='Valor'
           required
         />
         <Input
+          name='date'
           placeholder='Data'
           type='date'
           label='Data da transação'
-          value={date}
-          onChange={e => setDate(e.target.value)}
           required
         />
 

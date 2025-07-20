@@ -2,7 +2,7 @@
 import {
   Header,
   Menu,
-  NewTransaction,
+  TransactionForm,
   TransactionList,
   WelcomePannel,
 } from '@/components';
@@ -45,7 +45,7 @@ export default function Home() {
         />
         <div className='flex w-full flex-col gap-6 sm:max-w-[690] lg:gap-8'>
           <WelcomePannel />
-          <NewTransaction onAdd={handleAdd} />
+          <TransactionForm onAdd={handleAdd} />
         </div>
         {loading ? (
           <div className='flex w-full items-center justify-center bg-white p-4 text-caption-600 lg:h-dvh'>
