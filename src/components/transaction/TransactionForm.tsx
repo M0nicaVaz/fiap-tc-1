@@ -2,9 +2,8 @@
 import { useTransactions } from '@/hooks';
 import { ITransaction } from '@/lib/types/transaction';
 import { useState } from 'react';
-import { Button } from './Button';
-import { Input } from './Input';
-import { Select } from './Select';
+import { Input, Select } from '../form';
+import { Button } from '../ui';
 
 export function TransactionForm() {
   const [type, setType] = useState<ITransaction['type']>();

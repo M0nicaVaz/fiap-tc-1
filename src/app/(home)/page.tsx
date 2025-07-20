@@ -1,9 +1,9 @@
+import { Menu } from '@/components/layout';
 import {
-  Menu,
   TransactionForm,
   TransactionList,
   WelcomePannel,
-} from '@/components';
+} from '@/components/transaction';
 import { routes } from '@/constants/routes';
 
 export default function Home() {

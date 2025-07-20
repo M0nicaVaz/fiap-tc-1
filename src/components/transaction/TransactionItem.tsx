@@ -1,7 +1,7 @@
 import { ITransaction } from '@/lib/types/transaction';
 import { formatPrice } from '@/utils/formatPrice';
 import { PencilIcon, TrashIcon } from '@phosphor-icons/react/dist/ssr';
-import { IconButton } from './IconButton';
+import { IconButton } from '../ui';
 
 const transactionTypes: Record<ITransaction['type'], string> = {
   income: 'Depósito',

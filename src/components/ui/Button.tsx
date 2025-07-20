@@ -1,4 +1,4 @@
-import { Spinner } from './Spinner';
+import { Spinner } from '@phosphor-icons/react';
 
 export interface ButtonProps
   extends React.ButtonHTMLAttributes<HTMLButtonElement> {

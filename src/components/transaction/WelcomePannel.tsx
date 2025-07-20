@@ -5,7 +5,7 @@ import { formatPrice } from '@/utils/formatPrice';
 import { EyeSlashIcon } from '@phosphor-icons/react';
 import { EyeIcon } from '@phosphor-icons/react/dist/ssr';
 import { useState } from 'react';
-import { IconButton } from './IconButton';
+import { IconButton } from '../ui';
 
 export function WelcomePannel() {
   const [isBalanceVisible, setIsBalanceVisible] = useState<boolean>(false);

@@ -1,7 +1,7 @@
 'use client';
 import { useMenu } from '@/hooks';
 import { XIcon } from '@phosphor-icons/react/dist/ssr';
-import { LinkButton } from './NavigationLink';
+import { LinkButton } from '../ui/NavigationLink';
 
 interface Route {
   label: string;
