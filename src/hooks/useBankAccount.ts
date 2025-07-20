@@ -11,7 +11,6 @@ export function useBankAccount() {
   useEffect(() => {
     const account = bankAccountService.getAccount();
     setBalance(account.totalBalance);
-    console.log('Updated balance:', account.totalBalance);
   }, [transactions]);
 
   return { balance };

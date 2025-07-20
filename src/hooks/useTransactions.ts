@@ -1,10 +1,10 @@
 'use client';
 
-import { useContext } from 'react';
 import {
   TransactionContext,
   TransactionProvider,
-} from '../context/useTransactionProvider';
+} from '@/context/useTransactionProvider';
+import { useContext } from 'react';
 
 export function useTransactions() {
   const context = useContext(TransactionContext);
