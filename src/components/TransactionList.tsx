@@ -1,5 +1,5 @@
 import { ITransaction } from '@/lib/types/transaction/iTransaction';
-import { TransactionItem } from './TransactionItem';
+import { MonthlyTransactionList } from './MonthlyTransactionList';
 
 interface TransactionListProps {
   transactions: ITransaction[];
@@ -12,22 +12,44 @@ export function TransactionList({
   onEdit,
   onDelete,
 }: TransactionListProps) {
+  const groupedTransactions = transactions.reduce(
+    (acc, transaction) => {
+      const month = new Date(transaction.date).toLocaleString('pt-BR', {
+        month: 'long',
+        year: 'numeric',
+      });
+      if (!acc[month]) {
+        acc[month] = [];
+      }
+      acc[month].push(transaction);
+      return acc;
+    },
+    {} as Record<string, ITransaction[]>
+  );
+
+  const sortedMonths = Object.keys(groupedTransactions).sort((a, b) => {
+    const dateA = new Date(a);
+    const dateB = new Date(b);
+    return dateB.getTime() - dateA.getTime();
+  });
+
   return (
     <section className='w-full min-w-[280px] bg-white p-6 lg:h-dvh'>
-      <h2 className='mb-4 text-lg font-bold'>Transações</h2>
+      <h2 className='mb-4 text-lg font-bold'>Extrato</h2>
       {transactions.length === 0 ? (
         <p>Nenhuma transação cadastrada.</p>
       ) : (
-        <ul className='w-full space-y-2'>
-          {transactions.map(transaction => (
-            <TransactionItem
-              key={transaction.id}
-              transaction={transaction}
+        <div className='w-full space-y-6'>
+          {sortedMonths.map(month => (
+            <MonthlyTransactionList
+              key={month}
+              month={month}
+              transactions={groupedTransactions[month]}
               onEdit={onEdit}
               onDelete={onDelete}
             />
           ))}
-        </ul>
+        </div>
       )}
     </section>
   );

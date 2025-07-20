@@ -3,6 +3,7 @@ export * from './Header';
 export * from './IconButton';
 export * from './Input';
 export * from './Menu';
+export * from './MonthlyTransactionList';
 export * from './Select';
 export * from './Spinner';
 export * from './TransactionForm';
