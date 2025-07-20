@@ -1,5 +1,5 @@
 'use client';
-import { CaretUpIcon } from '@phosphor-icons/react/dist/ssr';
+import { CaretDownIcon } from '@phosphor-icons/react/dist/ssr';
 import { useEffect, useRef, useState } from 'react';
 
 export interface SelectOption {
@@ -63,35 +63,42 @@ export function Select({
         type='button'
         onClick={toggleDropdown}
         disabled={disabled}
-        className={`enabled:hover:border-primary-400 border-border-400 flex w-full cursor-pointer items-center justify-between gap-2 rounded-sm border border-solid bg-white px-4 py-2 text-left text-body-400 text-sm text-foreground-400 transition-all duration-200 focus:border-transparent focus:ring focus:ring-foreground-400 focus:outline-none enabled:hover:bg-foreground-000 disabled:cursor-not-allowed disabled:opacity-50 sm:min-w-80`}
+        className={`flex w-full cursor-pointer items-center justify-between gap-2 rounded-sm border border-solid bg-white px-4 py-2 text-left text-body-400 text-sm text-foreground-400 transition-all duration-200 focus:border-transparent focus:ring focus:ring-foreground-400 focus:outline-none disabled:cursor-not-allowed disabled:opacity-50 sm:min-w-80`}
       >
-        <span className={selectedValue ? 'text-body-600' : 'text-gray-400'}>
+        <span
+          className={
+            selectedValue
+              ? 'text-body-600'
+              : 'text-body-400 text-foreground-400/50'
+          }
+        >
           {selectedValue ? selectedValue.label : placeholder}
         </span>
 
-        <CaretUpIcon
+        <CaretDownIcon
           weight='fill'
           className={`h-4 w-4 transition-transform ${isOpen && 'rotate-180'}`}
         />
       </button>
 
       {isOpen && (
-        <div className='border-border-400 absolute z-50 mt-1 max-h-60 w-full overflow-auto rounded-sm border bg-white shadow-lg'>
-          <ul role='listbox' className='py-1'>
-            {options.map(option => (
-              <li key={option.value}>
-                <button
-                  type='button'
-                  onClick={() => handleSelect(option)}
-                  disabled={option.disabled}
-                  className={`w-full cursor-pointer px-4 py-2 text-body-400 text-foreground-400 hover:bg-foreground-000 hover:text-body-600 focus:bg-foreground-000 focus:outline-none`}
-                >
-                  {option.label}
-                </button>
-              </li>
-            ))}
-          </ul>
-        </div>
+        <ul
+          role='listbox'
+          className='absolute z-50 mt-1 max-h-60 w-full overflow-auto rounded-sm border bg-white shadow-lg'
+        >
+          {options.map(option => (
+            <li key={option.value}>
+              <button
+                type='button'
+                onClick={() => handleSelect(option)}
+                disabled={option.disabled}
+                className={`w-full cursor-pointer px-4 py-2 text-start text-body-400 text-foreground-400 hover:bg-foreground-000 hover:text-body-600 focus:bg-foreground-000 focus:outline-none`}
+              >
+                {option.label}
+              </button>
+            </li>
+          ))}
+        </ul>
       )}
     </div>
   );

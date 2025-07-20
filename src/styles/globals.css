@@ -2,7 +2,25 @@
 @import './font.css';
 @import './colors.css';
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   background: var(--color-background-400);
   color: var(--color-black);
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:enabled,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+select:-webkit-autofill,
+select:-webkit-autofill:enabled,
+select:-webkit-autofill:hover,
+select:-webkit-autofill:focus {
+  -webkit-text-fill-color: #606a71;
+  -webkit-box-shadow: 0 0 0px 1000px #fff inset;
+  box-shadow: 0 0 0px 1000px #fff inset;
+  background-color: transparent;
 }
