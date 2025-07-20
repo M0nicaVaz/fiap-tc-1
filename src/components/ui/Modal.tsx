@@ -21,7 +21,7 @@ export function Modal({ isOpen, onClose, children, title }: ModalProps) {
   return (
     <div
       onClick={handleBackdropClick}
-      className='fixed inset-0 z-50 flex items-center justify-center bg-black/60'
+      className='fixed inset-0 z-50 flex items-center justify-center bg-black/60 p-6'
     >
       <div className='relative w-full max-w-lg rounded-lg bg-gray-000 p-4 shadow-lg'>
         <div className='flex items-center justify-between rounded-t border-b border-background-700 p-4'>
