@@ -1,4 +1,12 @@
-export function SquaresSVG({ className }: { className?: string }) {
+export function SquaresSVG({
+  className,
+  variant = 'light',
+}: {
+  className?: string;
+  variant?: 'light' | 'dark';
+}) {
+  const fillColor = variant === 'light' ? '#D9D9D9' : '#DEE9EA';
+
   return (
     <svg
       width={180}
@@ -13,48 +21,48 @@ export function SquaresSVG({ className }: { className?: string }) {
           width={45}
           height={45}
           transform='matrix(-1 0 0 1 180 45)'
-          fill='#D9D9D9'
+          fill={fillColor}
         />
         <rect
           width={45}
           height={45}
           transform='matrix(-1 0 0 1 135 45)'
-          fill='#D9D9D9'
+          fill={fillColor}
           fillOpacity={0.5}
         />
         <rect
           width={45}
           height={45}
           transform='matrix(-1 0 0 1 135 90)'
-          fill='#D9D9D9'
+          fill={fillColor}
           fillOpacity={0.9}
         />
         <rect
           width={45}
           height={45}
           transform='matrix(-1 0 0 1 89.9998 45)'
-          fill='#D9D9D9'
+          fill={fillColor}
           fillOpacity={0.9}
         />
         <rect
           width={45}
           height={45}
           transform='matrix(-1 0 0 1 45 45)'
-          fill='#D9D9D9'
+          fill={fillColor}
           fillOpacity={0.5}
         />
         <rect
           width={45}
           height={45}
           transform='matrix(-1 0 0 1 45 0)'
-          fill='#D9D9D9'
+          fill={fillColor}
           fillOpacity={0.9}
         />
         <rect
           width={45}
           height={45}
           transform='matrix(-1 0 0 1 180 132.465)'
-          fill='#D9D9D9'
+          fill={fillColor}
           fillOpacity={0.9}
         />
       </g>

@@ -45,7 +45,7 @@ export function TransactionForm({
   }
 
   return (
-    <form onSubmit={handleSubmit} className='flex flex-col gap-4'>
+    <form onSubmit={handleSubmit} className='z-10 flex flex-col gap-4'>
       {transaction == null && (
         <Select
           placeholder='Selecione o tipo de transação'

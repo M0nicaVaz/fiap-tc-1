@@ -5,7 +5,7 @@ export interface InputProps
 
 export function Input({ label, ...props }: InputProps) {
   return (
-    <div className='flex flex-col'>
+    <div className='relative flex flex-col'>
       {label && (
         <label className='mb-1 text-body-600 text-sm text-foreground-400'>
           {label}
