@@ -9,12 +9,14 @@ export interface TransactionFormProps {
   onCreate?: (data: CreateTransactionDTO) => void;
   onEdit?: (data: Partial<ITransaction>) => void;
   onCancel?: () => void;
+  loading?: boolean;
 }
 
 export function TransactionForm({
   transaction,
   onCreate,
   onEdit,
+  loading = false,
 }: TransactionFormProps) {
   const [type, setType] = useState<ITransaction['type']>();
 
@@ -83,6 +85,7 @@ export function TransactionForm({
 
       <div className='mt-6'>
         <Button
+          loading={loading}
           title={transaction ? 'Salvar alterações' : 'Concluir transação'}
           type='submit'
         />
