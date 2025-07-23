@@ -1,7 +1,7 @@
 'use client';
 
 import { XIcon } from '@phosphor-icons/react';
-import { ReactNode } from 'react';
+import { ReactNode, useEffect } from 'react';
 import { IconButton } from './IconButton';
 
 interface ModalProps {
@@ -12,6 +12,19 @@ interface ModalProps {
 }
 
 export function Modal({ isOpen, onClose, children, title }: ModalProps) {
+  useEffect(() => {
+    if (!isOpen) return;
+
+    function handleEscapeKey(event: KeyboardEvent) {
+      if (event.key === 'Escape') {
+        onClose();
+      }
+    }
+
+    document.addEventListener('keydown', handleEscapeKey);
+    return () => document.removeEventListener('keydown', handleEscapeKey);
+  }, [isOpen, onClose]);
+
   if (!isOpen) return null;
 
   function handleBackdropClick(e: React.MouseEvent<HTMLDivElement>) {
