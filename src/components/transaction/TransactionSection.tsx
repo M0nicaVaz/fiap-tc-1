@@ -7,7 +7,7 @@ import { TransactionForm } from './TransactionForm';
 export function TransactionSection() {
   const { addTransaction, loading } = useTransactions();
   return (
-    <section className='relative h-[663px] w-full rounded-sm bg-gray-000 p-4 pb-0 sm:h-[480px]'>
+    <section className='relative h-[663px] w-full rounded-md bg-gray-000 p-4 pb-0 sm:h-[480px]'>
       <SquaresSVG variant='dark' className='absolute top-0 sm:right-0' />
       <SquaresSVG
         variant='dark'

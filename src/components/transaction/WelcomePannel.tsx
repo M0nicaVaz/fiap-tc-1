@@ -23,7 +23,7 @@ export function WelcomePannel() {
   }
 
   return (
-    <section className='relative flex h-[655px] w-full flex-col items-start gap-10 rounded-sm bg-foreground-400 p-8 sm:h-[402px] sm:flex-row sm:justify-between lg:w-[690px]'>
+    <section className='relative flex h-[655px] w-full flex-col items-start gap-10 rounded-md bg-foreground-400 p-8 sm:h-[402px] sm:flex-row sm:justify-between lg:w-[690px]'>
       <SquaresSVG className='absolute top-0 sm:right-0' />
       <SquaresSVG className='absolute right-0 bottom-0 rotate-180 sm:left-0' />
       <WelcomeSVG className='absolute right-0 bottom-6 left-0 mx-auto sm:left-8 sm:mx-0' />
@@ -46,7 +46,7 @@ export function WelcomePannel() {
             transparent
           />
         </div>
-        <div className='my-4 h-[2px] w-full rounded-sm bg-white' />
+        <div className='my-4 h-[2px] w-full rounded-md bg-white' />
 
         <div className='flex flex-col'>
           <span className='text-body-400'>Conta Corrente</span>

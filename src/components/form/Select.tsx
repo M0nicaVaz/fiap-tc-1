@@ -63,7 +63,7 @@ export function Select({
         type='button'
         onClick={toggleDropdown}
         disabled={disabled}
-        className={`flex w-full cursor-pointer items-center justify-between gap-2 rounded-sm border border-solid bg-white px-4 py-2 text-left text-body-400 text-sm text-foreground-400 transition-all duration-200 focus:border-transparent focus:ring focus:ring-foreground-400 focus:outline-none disabled:cursor-not-allowed disabled:opacity-50 sm:min-w-80`}
+        className={`flex w-full cursor-pointer items-center justify-between gap-2 rounded-md border border-solid bg-white px-4 py-2 text-left text-body-400 text-sm text-foreground-400 transition-all duration-200 focus:border-transparent focus:ring focus:ring-foreground-400 focus:outline-none disabled:cursor-not-allowed disabled:opacity-50 sm:min-w-80`}
       >
         <span
           className={
@@ -84,7 +84,7 @@ export function Select({
       {isOpen && (
         <ul
           role='listbox'
-          className='absolute z-50 mt-1 max-h-60 w-full overflow-auto rounded-sm border bg-white shadow-lg'
+          className='absolute z-50 mt-1 max-h-60 w-full overflow-auto rounded-md border bg-white shadow-lg'
         >
           {options.map(option => (
             <li key={option.value}>
