@@ -35,7 +35,7 @@ export function WelcomePannel() {
           {today.toLocaleDateString()}
         </span>
       </div>
-      <div className='z-10 flex w-full min-w-[180px] flex-col justify-center text-white sm:h-full sm:max-w-[200px]'>
+      <div className='z-10 flex w-full min-w-[180px] flex-col justify-center text-white sm:h-full sm:max-w-fit'>
         <div className='flex items-center gap-6'>
           <span className='text-subtitle-600'>Saldo</span>
           <IconButton
