@@ -43,6 +43,7 @@ export const Loading: Story = {
   args: {
     title: 'Carregando...',
     loading: true,
+    disabled: true,
   },
 };
 
@@ -53,15 +54,9 @@ export const Disabled: Story = {
   },
 };
 
-export const WithLongText: Story = {
-  args: {
-    title: 'Texto muito longo para teste',
-  },
-};
-
 export const Interactive: Story = {
   args: {
     title: 'Clique aqui',
-    onClick: fn(),
+    onClick: fn(() => alert('Botão clicado!')),
   },
 };
