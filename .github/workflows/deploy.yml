@@ -1,0 +1,39 @@
+name: Deploy Next.js App and Storybook to Vercel
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Install Dependencies
+        run: npm install
+
+      # --- Deploy do Next.js App ---
+      - name: Deploy Next.js App to Vercel
+        run: npx vercel deploy --prebuilt --prod --token=${{ secrets.VERCEL_TOKEN }}
+        env:
+          VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
+          VERCEL_PROJECT_ID: ${{ secrets.VERCEL_APP_PROJECT_ID }}
+
+      # --- Build e Deploy do Storybook ---
+      - name: Build Storybook
+        run: npm run build-storybook
+
+      - name: Deploy Storybook to Vercel
+        run: npx vercel deploy ./storybook-static --prebuilt --prod --token=${{ secrets.VERCEL_TOKEN }}
+        env:
+          VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
+          VERCEL_PROJECT_ID: ${{ secrets.VERCEL_STORYBOOK_PROJECT_ID }}
