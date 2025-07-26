@@ -28,10 +28,10 @@ jobs:
           VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
           VERCEL_PROJECT_ID: ${{ secrets.VERCEL_APP_PROJECT_ID }} # ID do projeto Vercel para o Next.js App
 
-      # - name: Build Storybook
-      #   run: npm run build-storybook
-
       # --- Build e Deploy do Storybook ---
+      - name: Build Storybook
+        run: npm run build-storybook
+
       - name: Deploy Storybook to Vercel
         run: npx vercel deploy ./storybook-static --prod --token=${{ secrets.VERCEL_TOKEN }}
         env:
