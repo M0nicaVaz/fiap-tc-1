@@ -29,6 +29,7 @@ export function Menu({ routes }: MenuProps) {
       >
         <div className='self-end xl:hidden'>
           <IconButton
+            variant='regular'
             transparent
             icon={XIcon}
             onClick={closeMenu}

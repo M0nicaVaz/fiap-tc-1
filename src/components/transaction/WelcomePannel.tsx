@@ -39,6 +39,7 @@ export function WelcomePannel() {
         <div className='flex items-center gap-6'>
           <span className='text-subtitle-600'>Saldo</span>
           <IconButton
+            variant='regular'
             onClick={toggleBalanceVisibility}
             icon={isBalanceVisible ? EyeIcon : EyeSlashIcon}
             iconWeight='duotone'

@@ -40,6 +40,7 @@ export function Modal({ isOpen, onClose, children, title }: ModalProps) {
         <div className='flex items-center justify-between rounded-t border-b border-background-700 p-4'>
           <h3 className='text-title-700 text-foreground-400'>{title}</h3>
           <IconButton
+            variant='regular'
             transparent
             icon={XIcon}
             onClick={onClose}
