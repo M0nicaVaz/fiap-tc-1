@@ -69,13 +69,11 @@ export function MonthlyTransactionList({
           onClose={handleCloseModal}
           title='Editar transação'
         >
-          <div className='p-4'>
-            <TransactionForm
-              transaction={selectedTransaction}
-              onEdit={handleUpdateTransaction}
-              loading={loading}
-            />
-          </div>
+          <TransactionForm
+            transaction={selectedTransaction}
+            onEdit={handleUpdateTransaction}
+            loading={loading}
+          />
         </Modal>
       )}
     </div>

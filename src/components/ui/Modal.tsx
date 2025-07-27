@@ -36,7 +36,7 @@ export function Modal({ isOpen, onClose, children, title }: ModalProps) {
       onClick={handleBackdropClick}
       className='fixed inset-0 z-50 flex items-center justify-center bg-black/60 p-6'
     >
-      <div className='relative w-full max-w-lg rounded-md bg-gray-000 p-4 shadow-lg'>
+      <div className='relative flex w-full max-w-lg flex-col gap-4 rounded-md bg-gray-000 p-4 shadow-lg'>
         <div className='flex items-center justify-between rounded-t border-b border-background-700 p-4'>
           <h3 className='text-title-700 text-foreground-400'>{title}</h3>
           <IconButton
