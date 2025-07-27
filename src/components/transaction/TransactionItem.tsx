@@ -1,7 +1,7 @@
 import { ITransaction } from '@/lib/types/transaction';
 import { formatPrice } from '@/utils/formatPrice';
 import { PencilIcon, TrashIcon } from '@phosphor-icons/react/dist/ssr';
-import { IconButton } from '../ui';
+import { IconButton, ListItem } from '../ui';
 
 const transactionTypes: Record<ITransaction['type'], string> = {
   income: 'Depósito',
@@ -21,15 +21,13 @@ export function TransactionItem({
   onDelete,
 }: TransactionItemProps) {
   return (
-    <li
+    <ListItem
       key={transaction.id}
-      className='flex w-full flex-col items-center justify-between gap-2 border-b border-b-background-700 pb-2'
-    >
-      <div className='flex w-full items-center justify-between gap-2'>
-        <span className='text-body-400'>
-          {transactionTypes[transaction.type]}
-        </span>
-        <div className='flex gap-1'>
+      title={transactionTypes[transaction.type]}
+      subtitle={formatPrice(transaction.amount)}
+      info={new Date(transaction.createdAt).toLocaleDateString()}
+      actions={
+        <>
           <IconButton
             title='Editar'
             icon={PencilIcon}
@@ -44,18 +42,8 @@ export function TransactionItem({
             iconColor='text-white'
             variant='small'
           />
-        </div>
-      </div>
-      <div className='flex w-full items-center justify-between gap-2'>
-        <span className='text-body-600 text-foreground-400'>
-          {formatPrice(transaction.amount)}
-        </span>
-        <div className='flex gap-1'>
-          <span className='text-caption-400 text-foreground-400/50'>
-            {new Date(transaction.createdAt).toLocaleDateString()}
-          </span>
-        </div>
-      </div>
-    </li>
+        </>
+      }
+    />
   );
 }
