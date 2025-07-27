@@ -33,11 +33,8 @@ class TransactionService {
   }
 
   update(id: string, dto: Partial<ITransaction>): ITransaction | undefined {
-    const existingTransaction = this.repository.findById(id);
-    if (!existingTransaction) return undefined;
-
-    const updatedTransactionData = { ...existingTransaction, ...dto };
-    this.repository.update(id, updatedTransactionData);
+    const updated = this.repository.update(id, dto);
+    if (!updated) return undefined;
     return this.repository.findById(id);
   }
 }

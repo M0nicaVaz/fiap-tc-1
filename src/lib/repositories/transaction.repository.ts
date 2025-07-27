@@ -34,14 +34,23 @@ export class TransactionRepositoryLocalStorage
     );
   }
 
-  update(id: string, updated: Partial<ITransaction>): void {
+  update(id: string, updated: Partial<ITransaction>): boolean {
     const currentTransactions = this.getAll();
-    const newTransactions = currentTransactions.map(t =>
-      t.id === id ? { ...t, ...updated } : t
-    );
+    const transactionIndex = currentTransactions.findIndex(t => t.id === id);
+
+    if (transactionIndex === -1) return false;
+
+    const newTransactions = [...currentTransactions];
+    newTransactions[transactionIndex] = {
+      ...newTransactions[transactionIndex],
+      ...updated,
+    };
+
     localStorage.setItem(
       TRANSACTIONS_STORAGE_KEY,
       JSON.stringify(newTransactions)
     );
+
+    return true;
   }
 }

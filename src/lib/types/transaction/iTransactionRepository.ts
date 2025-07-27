@@ -5,5 +5,5 @@ export interface ITransactionRepository {
   getAll(): ITransaction[];
   findById(id: string): ITransaction | undefined;
   remove(id: string): void;
-  update(id: string, updated: Partial<ITransaction>): void;
+  update(id: string, updated: Partial<ITransaction>): boolean;
 }
