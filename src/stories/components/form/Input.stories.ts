@@ -23,7 +23,7 @@ const meta = {
     },
     type: {
       control: 'select',
-      options: ['text', 'number'],
+      options: ['text', 'number', 'date'],
       description: 'Tipo do input',
     },
   },
@@ -44,6 +44,14 @@ export const Number: Story = {
     type: 'number',
     placeholder: '0,00',
     step: '0.01',
+  },
+};
+
+export const Date: Story = {
+  args: {
+    label: 'Data',
+    type: 'date',
+    placeholder: 'Selecione uma data',
   },
 };
 
