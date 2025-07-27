@@ -60,9 +60,13 @@ export function TransactionProvider({ children }: { children: ReactNode }) {
   );
 
   useEffect(() => {
-    try {
+    const getTransactions = () => {
       const allTransactions = transactionService.getAll();
       setTransactions(allTransactions);
+    };
+
+    try {
+      getTransactions();
     } catch (error) {
       console.error('Failed to load transactions:', error);
     } finally {
