@@ -1,0 +1,59 @@
+import { Meta, ColorPalette, ColorItem } from '@storybook/addon-docs/blocks';
+
+<Meta title='Tokens/Cores' />
+
+export default function Colors() {
+  return (
+    <section className='flex flex-col gap-2'>
+      <h1>🌈 Paleta de Cores</h1>
+      <div>
+      <span className='text-body-600'>A aplicação utiliza a paleta de cores fornecida no <a href="">figma</a>.</span>
+      <p className='text-body-400'>As cores do tema sobrescrevem as cores padrão do TailwindCSS e podem ser acessadas através da classe <code>bg-"cor"</code>, <code>text-"cor"</code> e assim por diante.</p>
+      </div>
+      <div className='w-full h-1 bg-black/20'/>
+
+      <ColorPalette>
+        <ColorItem
+          title='Base Colors'
+          subtitle='Cores neutras'
+          colors={{
+            'white': '#fff',
+            'black': '#000',
+          }}
+        />
+        <ColorItem
+          title='Background Colors'
+          subtitle='Cores de fundo'
+          colors={{
+            'background-700': '#47a138',
+            'background-400': '#e4ede3',
+            'background-000': '#f8f8f8',
+          }}
+        />
+        <ColorItem
+          title='Foreground Colors'
+          subtitle='Cores de primeiro plano'
+          colors={{
+            'foreground-400': '#004d61',
+            'foreground-000': '#dee9ea',
+          }}
+        />
+        <ColorItem
+          title='Gray Colors'
+          subtitle='Tons de cinza'
+          colors={{
+            'gray-000': '#cbcbcb',
+          }}
+        />
+        <ColorItem
+          title='Highlight Color'
+          subtitle='Cor de destaque'
+          colors={{
+            'highlight': '#ff5031',
+          }}
+        />
+      </ColorPalette>
+    </section>
+
+);
+}

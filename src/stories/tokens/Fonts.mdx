@@ -1,0 +1,210 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+
+<Meta title='Tokens/Tipografia' />
+
+export default function Typography() {
+  return (
+    <section className='flex flex-col gap-4'>
+      <h1>🔤 Tipografia</h1>
+      <div>
+        <span className='text-body-600'>
+          A aplicação utiliza um sistema de tipografia personalizado baseado na
+          fonte Inter.
+        </span>
+        <p className='text-body-400'>
+          As classes de tipografia foram criadas como utilities customizadas do
+          TailwindCSS e podem ser acessadas através das classes{' '}
+          <code>text-"categoria"-"peso"</code>.
+        </p>
+      </div>
+      <div className='h-1 w-full bg-black/20' />
+
+      <div className='space-y-6'>
+        <div>
+          <h2 className='mb-3 text-subtitle-600'>Títulos</h2>
+          <ul>
+            <li className='grid grid-cols-2 border-b border-black/10 pb-4'>
+              <div className='flex flex-col gap-2 justify-center'>
+                <span className='text-caption-400'>Título Bold</span>
+                <span className='text-caption-600'>text-title-700</span>
+              </div>
+              <code className="block whitespace-pre-line">
+                <pre>
+                  font-size: 1.5rem;
+                </pre>
+                <pre>
+                  font-weight: bold;
+                </pre>
+                <pre>
+                  line-height: 150%;
+                </pre>
+              </code>
+            </li>
+            <li className='grid grid-cols-2 border-b border-black/10 pb-4'>
+              <div className='flex flex-col gap-2 justify-center'>
+                <span className='text-caption-400'>Título Semibold</span>
+                <span className='text-caption-600'>text-title-600</span>
+              </div>
+              <code className="block whitespace-pre-line">
+                <pre>
+                  font-size: 1.5rem;
+                </pre>
+                <pre>
+                  font-weight: 600;
+                </pre>
+                <pre>
+                  line-height: 150%;
+                </pre>
+              </code>
+            </li>
+          </ul>
+
+        </div>
+
+        <div>
+          <h2 className='mb-3 text-subtitle-600'>Destaque</h2>
+          <ul>
+            <li className='grid grid-cols-2 border-b border-black/10 pb-4'>
+              <div className='flex flex-col gap-2 justify-center'>
+                <span className='text-caption-400'>Texto de Destaque</span>
+                <span className='text-caption-600'>text-highlight-400</span>
+              </div>
+              <code className="block whitespace-pre-line">
+                <pre>
+                  font-size: 1.875rem;
+                </pre>
+                <pre>
+                  font-weight: 400;
+                </pre>
+                <pre>
+                  line-height: 150%;
+                </pre>
+              </code>
+            </li>
+          </ul>
+        </div>
+
+        <div>
+          <h2 className='mb-3 text-subtitle-600'>Subtítulos</h2>
+          <ul>
+            <li className='grid grid-cols-2 border-b border-black/10 pb-4'>
+              <div className='flex flex-col gap-2 justify-center'>
+                <span className='text-caption-400'>Subtítulo Semibold</span>
+                <span className='text-caption-600'>text-subtitle-600</span>
+              </div>
+              <code className="block whitespace-pre-line">
+                <pre>
+                  font-size: 1.25rem;
+                </pre>
+                <pre>
+                  font-weight: 600;
+                </pre>
+                <pre>
+                  line-height: 120%;
+                </pre>
+              </code>
+            </li>
+            <li className='grid grid-cols-2 border-b border-black/10 pb-4'>
+              <div className='flex flex-col gap-2 justify-center'>
+                <span className='text-caption-400'>Subtítulo Normal</span>
+                <span className='text-caption-600'>text-subtitle-400</span>
+              </div>
+              <code className="block whitespace-pre-line">
+                <pre>
+                  font-size: 1.25rem;
+                </pre>
+                <pre>
+                  font-weight: 400;
+                </pre>
+                <pre>
+                  line-height: 120%;
+                </pre>
+              </code>
+            </li>
+          </ul>
+        </div>
+
+        <div>
+          <h2 className='mb-3 text-subtitle-600'>Corpo do Texto</h2>
+          <ul>
+            <li className='grid grid-cols-2 border-b border-black/10 pb-4'>
+              <div className='flex flex-col gap-2 justify-center'>
+                <span className='text-caption-400'>Corpo Semibold</span>
+                <span className='text-caption-600'>text-body-600</span>
+              </div>
+              <code className="block whitespace-pre-line">
+                <pre>
+                  font-size: 1rem;
+                </pre>
+                <pre>
+                  font-weight: 600;
+                </pre>
+                <pre>
+                  line-height: 120%;
+                </pre>
+              </code>
+            </li>
+            <li className='grid grid-cols-2 border-b border-black/10 pb-4'>
+              <div className='flex flex-col gap-2 justify-center'>
+                <span className='text-caption-400'>Corpo Normal</span>
+                <span className='text-caption-600'>text-body-400</span>
+              </div>
+              <code className="block whitespace-pre-line">
+                <pre>
+                  font-size: 1rem;
+                </pre>
+                <pre>
+                  font-weight: 400;
+                </pre>
+                <pre>
+                  line-height: 120%;
+                </pre>
+              </code>
+            </li>
+          </ul>
+        </div>
+
+        <div>
+          <h2 className='mb-3 text-subtitle-600'>Legendas</h2>
+          <ul>
+            <li className='grid grid-cols-2 border-b border-black/10 pb-4'>
+              <div className='flex flex-col gap-2 justify-center'>
+                <span className='text-caption-400'>Legenda Semibold</span>
+                <span className='text-caption-600'>text-caption-600</span>
+              </div>
+              <code className="block whitespace-pre-line">
+                <pre>
+                  font-size: 0.75rem;
+                </pre>
+                <pre>
+                  font-weight: 600;
+                </pre>
+                <pre>
+                  line-height: 120%;
+                </pre>
+              </code>
+            </li>
+            <li className='grid grid-cols-2 border-b border-black/10 pb-4'>
+              <div className='flex flex-col gap-2 justify-center'>
+                <span className='text-caption-400'>Legenda Normal</span>
+                <span className='text-caption-600'>text-caption-400</span>
+              </div>
+              <code className="block whitespace-pre-line">
+                <pre>
+                  font-size: 0.75rem;
+                </pre>
+                <pre>
+                  font-weight: 400;
+                </pre>
+                <pre>
+                  line-height: 120%;
+                </pre>
+              </code>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+);
+}
