@@ -69,7 +69,7 @@ export function Select({
           className={
             selectedValue
               ? 'text-body-600'
-              : 'text-body-400 text-foreground-400/50'
+              : 'text-body-400 text-foreground-400/80'
           }
         >
           {selectedValue ? selectedValue.label : placeholder}
