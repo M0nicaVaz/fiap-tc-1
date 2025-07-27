@@ -5,11 +5,12 @@ import { usePathname } from 'next/navigation';
 export interface LinkButtonProps {
   to: string;
   text: string;
+  active?: boolean;
 }
 
-export function LinkButton({ to, text }: LinkButtonProps) {
+export function LinkButton({ to, text, active }: LinkButtonProps) {
   const pathname = usePathname();
-  const isActive = pathname === to;
+  const isActive = active ?? pathname === to;
 
   return (
     <Link
