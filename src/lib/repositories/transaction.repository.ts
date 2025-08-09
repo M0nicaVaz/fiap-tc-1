@@ -1,11 +1,12 @@
 import { ITransaction } from '@/lib/types/transaction/iTransaction';
+import { ITransactionReader } from '../types/transaction/iTransactionReader';
 import { ITransactionRepository } from '../types/transaction/iTransactionRepository';
 
 // TODO: add .env
 const TRANSACTIONS_STORAGE_KEY = 'my-finances:transactions';
 
 export class TransactionRepositoryLocalStorage
-  implements ITransactionRepository
+  implements ITransactionRepository, ITransactionReader
 {
   add(transaction: ITransaction): void {
     const currentTransactions = this.getAll();
@@ -28,10 +29,7 @@ export class TransactionRepositoryLocalStorage
   remove(id: string): void {
     const currentTransactions = this.getAll();
     const newTransactions = currentTransactions.filter(t => t.id !== id);
-    localStorage.setItem(
-      TRANSACTIONS_STORAGE_KEY,
-      JSON.stringify(newTransactions)
-    );
+    this.updateStorage(newTransactions);
   }
 
   update(id: string, updated: Partial<ITransaction>): boolean {
@@ -46,11 +44,11 @@ export class TransactionRepositoryLocalStorage
       ...updated,
     };
 
-    localStorage.setItem(
-      TRANSACTIONS_STORAGE_KEY,
-      JSON.stringify(newTransactions)
-    );
-
+    this.updateStorage(newTransactions);
     return true;
+  }
+
+  private updateStorage(value: ITransaction[]) {
+    localStorage.setItem(TRANSACTIONS_STORAGE_KEY, JSON.stringify(value));
   }
 }

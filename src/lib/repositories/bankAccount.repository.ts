@@ -1,9 +1,9 @@
 import { IBankAccount } from '../types/bank-account/iBankAccount';
 import { IBankAccountRepository } from '../types/bank-account/iBankAccountRepository';
-import { ITransactionRepository } from '../types/transaction/iTransactionRepository';
+import { ITransactionReader } from '../types/transaction/iTransactionReader';
 
 export class BankAccountRepository implements IBankAccountRepository {
-  constructor(private transactionRepository: ITransactionRepository) {}
+  constructor(private transactionRepository: ITransactionReader) {}
 
   get(): IBankAccount {
     const allTransactions = this.transactionRepository.getAll();

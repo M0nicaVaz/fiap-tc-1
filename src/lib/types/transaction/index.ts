@@ -1,3 +1,4 @@
-export type { ITransaction } from './iTransaction';
-export type { ITransactionRepository } from './iTransactionRepository';
-export type { CreateTransactionDTO } from './CreateTransaction.dto';
+export * from './CreateTransaction.dto';
+export * from './iTransaction';
+export * from './iTransactionReader';
+export * from './iTransactionRepository';
