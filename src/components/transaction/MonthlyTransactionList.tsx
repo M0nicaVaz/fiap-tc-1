@@ -16,7 +16,7 @@ export function MonthlyTransactionList({
   month,
   transactions,
 }: MonthlyTransactionListProps) {
-  const { removeTransaction, updateTransaction, loading } = useTransactions();
+  const { removeTransaction, updateTransaction } = useTransactions();
   const [isDialogOpen, setIsDialogOpen] = useState(false);
   const [isConfirmDialogOpen, setIsConfirmDialogOpen] = useState(false);
   const [selectedTransaction, setSelectedTransaction] =
@@ -81,7 +81,6 @@ export function MonthlyTransactionList({
           <TransactionForm
             transaction={selectedTransaction}
             onEdit={handleUpdateTransaction}
-            loading={loading}
           />
         </Dialog>
       )}

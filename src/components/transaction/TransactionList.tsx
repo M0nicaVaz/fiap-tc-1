@@ -9,16 +9,16 @@ export function TransactionList() {
   const { transactions } = useTransactions();
 
   const groupedTransactions = transactions.reduce(
-    (acc, transaction) => {
+    (allMonths, transaction) => {
       const month = new Date(transaction.date).toLocaleString('pt-BR', {
         month: 'long',
         year: 'numeric',
       });
-      if (!acc[month]) {
-        acc[month] = [];
+      if (!allMonths[month]) {
+        allMonths[month] = [];
       }
-      acc[month].push(transaction);
-      return acc;
+      allMonths[month].push(transaction);
+      return allMonths;
     },
     {} as Record<string, ITransaction[]>
   );

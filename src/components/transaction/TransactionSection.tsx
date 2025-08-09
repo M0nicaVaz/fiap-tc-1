@@ -5,7 +5,7 @@ import { useTransactions } from '@/hooks';
 import { TransactionForm } from './TransactionForm';
 
 export function TransactionSection() {
-  const { addTransaction, loading } = useTransactions();
+  const { addTransaction } = useTransactions();
   return (
     <section className='relative h-[663px] w-full rounded-md bg-gray-000 p-4 pb-0 sm:h-[480px]'>
       <SquaresSVG variant='dark' className='absolute top-0 sm:right-0' />
@@ -20,7 +20,7 @@ export function TransactionSection() {
       </h2>
 
       <div className='min-h-[364px] w-[355px] flex-col gap-4'>
-        <TransactionForm onCreate={addTransaction} loading={loading} />
+        <TransactionForm onCreate={addTransaction} />
       </div>
     </section>
   );

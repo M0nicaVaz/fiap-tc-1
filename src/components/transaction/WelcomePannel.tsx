@@ -1,6 +1,6 @@
 'use client';
 import { SquaresSVG, WelcomeSVG } from '@/assets/illustrations';
-import { useBankAccount } from '@/hooks/useBankAccount';
+import { useTransactions } from '@/hooks';
 import { formatPrice } from '@/utils/formatPrice';
 import { EyeSlashIcon } from '@phosphor-icons/react';
 import { EyeIcon } from '@phosphor-icons/react/dist/ssr';
@@ -9,7 +9,7 @@ import { IconButton } from '../ui';
 
 export function WelcomePannel() {
   const [isBalanceVisible, setIsBalanceVisible] = useState<boolean>(false);
-  const { balance } = useBankAccount();
+  const { balance } = useTransactions();
   const today = new Date();
 
   function toggleBalanceVisibility() {
