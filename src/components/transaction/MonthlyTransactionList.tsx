@@ -2,7 +2,8 @@
 import { useTransactions } from '@/hooks';
 import { ITransaction } from '@/lib/types/transaction/iTransaction';
 import { useState } from 'react';
-import { Modal } from '../ui/Modal';
+import { Dialog } from '../ui';
+import { ConfirmDialog } from './ConfirmDialog';
 import { TransactionForm } from './TransactionForm';
 import { TransactionItem } from './TransactionItem';
 
@@ -16,7 +17,8 @@ export function MonthlyTransactionList({
   transactions,
 }: MonthlyTransactionListProps) {
   const { removeTransaction, updateTransaction, loading } = useTransactions();
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isDialogOpen, setIsDialogOpen] = useState(false);
+  const [isConfirmDialogOpen, setIsConfirmDialogOpen] = useState(false);
   const [selectedTransaction, setSelectedTransaction] =
     useState<ITransaction | null>(null);
 
@@ -24,27 +26,34 @@ export function MonthlyTransactionList({
     const transaction = transactions.find(t => t.id === id);
     if (transaction) {
       setSelectedTransaction(transaction);
-      setIsModalOpen(true);
+      setIsDialogOpen(true);
     }
   }
 
-  function handleDelete(id: string) {
-    removeTransaction(id);
+  function handleDelete(transaction: ITransaction) {
+    setSelectedTransaction(transaction);
+    setIsConfirmDialogOpen(true);
   }
 
-  function handleCloseModal() {
-    setIsModalOpen(false);
+  function handleCloseDialog() {
+    setIsDialogOpen(false);
     setSelectedTransaction(null);
   }
 
+  function handleCloseConfirmDialog() {
+    if (selectedTransaction) {
+      removeTransaction(selectedTransaction.id);
+    }
+    setIsConfirmDialogOpen(false);
+  }
+
   function handleUpdateTransaction(data: Partial<ITransaction>) {
-    console.log('Updating transaction with data:', data);
     if (selectedTransaction) {
       updateTransaction(selectedTransaction.id, {
         ...selectedTransaction,
         ...data,
       });
-      handleCloseModal();
+      handleCloseDialog();
     }
   }
 
@@ -59,14 +68,14 @@ export function MonthlyTransactionList({
             key={transaction.id}
             transaction={transaction}
             onEdit={handleEdit}
-            onDelete={handleDelete}
+            onDelete={() => handleDelete(transaction)}
           />
         ))}
       </ul>
       {selectedTransaction && (
-        <Modal
-          isOpen={isModalOpen}
-          onClose={handleCloseModal}
+        <Dialog
+          isOpen={isDialogOpen}
+          onClose={handleCloseDialog}
           title='Editar transação'
         >
           <TransactionForm
@@ -74,7 +83,14 @@ export function MonthlyTransactionList({
             onEdit={handleUpdateTransaction}
             loading={loading}
           />
-        </Modal>
+        </Dialog>
+      )}
+      {isConfirmDialogOpen && (
+        <ConfirmDialog
+          isOpen={isConfirmDialogOpen}
+          onClose={() => setIsConfirmDialogOpen(false)}
+          onConfirm={handleCloseConfirmDialog}
+        />
       )}
     </div>
   );
