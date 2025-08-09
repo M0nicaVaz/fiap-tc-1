@@ -2,8 +2,8 @@ import { ITransaction } from '@/lib/types/transaction/iTransaction';
 import { ITransactionReader } from '../types/transaction/iTransactionReader';
 import { ITransactionRepository } from '../types/transaction/iTransactionRepository';
 
-// TODO: add .env
-const TRANSACTIONS_STORAGE_KEY = 'my-finances:transactions';
+const TRANSACTIONS_STORAGE_KEY = process.env
+  .NEXT_PUBLIC_TRANSACTIONS_STORAGE_KEY as string;
 
 export class TransactionRepositoryLocalStorage
   implements ITransactionRepository, ITransactionReader
