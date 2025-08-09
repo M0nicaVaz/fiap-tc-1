@@ -4,14 +4,14 @@ import { XIcon } from '@phosphor-icons/react';
 import { ReactNode, useEffect } from 'react';
 import { IconButton } from './IconButton';
 
-interface ModalProps {
+interface DialogProps {
   isOpen: boolean;
   onClose: () => void;
   children: ReactNode;
   title: string;
 }
 
-export function Modal({ isOpen, onClose, children, title }: ModalProps) {
+export function Dialog({ isOpen, onClose, children, title }: DialogProps) {
   useEffect(() => {
     if (!isOpen) return;
 
