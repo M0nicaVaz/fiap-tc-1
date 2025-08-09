@@ -23,6 +23,14 @@ const meta = {
       control: 'text',
       description: 'Texto exibido no link',
     },
+    active: {
+      control: 'boolean',
+      description: 'Define se o link corresponde à rota atual',
+    },
+    disabled: {
+      control: 'boolean',
+      description: 'Define se o link está desabilitado',
+    },
   },
 } satisfies Meta<typeof LinkButton>;
 
@@ -41,5 +49,13 @@ export const Active: Story = {
     to: '/',
     text: 'Início',
     active: true,
+  },
+};
+
+export const Disabled: Story = {
+  args: {
+    to: '/transactions',
+    text: 'Transferências',
+    disabled: true,
   },
 };
