@@ -1,6 +1,6 @@
 'use client';
 
-import { transactionService } from '@/lib/services/transaction.service';
+import { createTransactionService } from '@/lib/factories';
 import { CreateTransactionDTO } from '@/lib/types/transaction';
 import { ITransaction } from '@/lib/types/transaction/iTransaction';
 import {
@@ -22,6 +22,8 @@ interface ITransactionContext {
 export const TransactionContext = createContext<ITransactionContext | null>(
   null
 );
+
+const transactionService = createTransactionService();
 
 export function TransactionProvider({ children }: { children: ReactNode }) {
   const [transactions, setTransactions] = useState<ITransaction[]>([]);

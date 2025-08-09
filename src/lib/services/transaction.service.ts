@@ -1,14 +1,9 @@
-import { TransactionRepositoryLocalStorage } from '@/lib/repositories/transaction.repository';
 import { ITransaction } from '@/lib/types/transaction/iTransaction';
 import { ITransactionRepository } from '@/lib/types/transaction/iTransactionRepository';
 import { CreateTransactionDTO } from '../types/transaction';
 
-class TransactionService {
-  private repository: ITransactionRepository;
-
-  constructor(repository: ITransactionRepository) {
-    this.repository = repository;
-  }
+export class TransactionService {
+  constructor(private repository: ITransactionRepository) {}
 
   add(transaction: CreateTransactionDTO): ITransaction {
     const newTransaction: ITransaction = {
@@ -38,7 +33,3 @@ class TransactionService {
     return this.repository.findById(id);
   }
 }
-
-export const transactionService = new TransactionService(
-  new TransactionRepositoryLocalStorage()
-);

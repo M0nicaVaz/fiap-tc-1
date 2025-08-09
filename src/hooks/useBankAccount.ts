@@ -1,8 +1,10 @@
 'use client';
 
-import { bankAccountService } from '@/lib/services/bankAccount.service';
+import { createBankAccountService } from '@/lib/factories';
 import { useEffect, useState } from 'react';
 import { useTransactions } from './useTransactions';
+
+const bankAccountService = createBankAccountService();
 
 export function useBankAccount() {
   const [balance, setBalance] = useState<number>(0);

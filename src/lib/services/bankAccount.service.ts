@@ -1,12 +1,10 @@
-import { BankAccountRepository } from '../repositories/bankAccount.repository';
-import { TransactionRepositoryLocalStorage } from '../repositories/transaction.repository';
 import { IBankAccount } from '../types/bank-account';
+import { IBankAccountRepository } from '../types/bank-account/iBankAccountRepository';
 
-const transactionRepository = new TransactionRepositoryLocalStorage();
-const bankAccountRepository = new BankAccountRepository(transactionRepository);
+export class BankAccountService {
+  constructor(private repository: IBankAccountRepository) {}
 
-export const bankAccountService = {
   getAccount(): IBankAccount {
-    return bankAccountRepository.get();
-  },
-};
+    return this.repository.get();
+  }
+}
