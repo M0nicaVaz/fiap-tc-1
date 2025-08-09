@@ -45,6 +45,7 @@ src/
 ├── context/            # Provedores de contexto do React
 ├── hooks/              # Hooks customizados
 ├── lib/                # Lógica de negócio, serviços e repositórios
+│   ├── factories/      # Camada de criação de objetos (criação de instâncias)
 │   ├── repositories/   # Camada de acesso a dados (comunicação com localStorage)
 │   ├── services/       # Camada de serviço (regras de negócio)
 │   └── types/          # Definições de tipos e interfaces
@@ -78,7 +79,8 @@ Para executar o projeto em seu ambiente de desenvolvimento, siga os passos abaix
     ```bash
     npm install
     ```
-4.  Execute o servidor de desenvolvimento:
+4.  Crie um arquivo `.env` de acordo com o `.env.example`.
+5.  Execute o servidor de desenvolvimento:
     ```bash
     npm run dev
     ```
