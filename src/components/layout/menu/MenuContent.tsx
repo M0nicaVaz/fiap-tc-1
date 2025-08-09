@@ -38,7 +38,12 @@ export function MenuContent({ routes }: { routes: Route[] }) {
           />
         </div>
         {routes.map(route => (
-          <LinkButton key={route.href} to={route.href} text={route.label} />
+          <LinkButton
+            key={route.href}
+            to={route.href}
+            text={route.label}
+            disabled={route.disabled}
+          />
         ))}
       </nav>
     </>
